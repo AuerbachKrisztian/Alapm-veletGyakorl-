@@ -2,6 +2,7 @@
 package alapmuveletek;
 
 import java.awt.Color;
+import java.util.Random;
 
 /**
  *
@@ -61,6 +62,11 @@ public class gui extends javax.swing.JFrame {
         });
 
         btnUjKifejezes.setText("Új kifejezés kérése");
+        btnUjKifejezes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUjKifejezesActionPerformed(evt);
+            }
+        });
 
         jbMegoldas.setText("Megoldás");
         jbMegoldas.addActionListener(new java.awt.event.ActionListener() {
@@ -181,30 +187,38 @@ public class gui extends javax.swing.JFrame {
                     .addComponent(btnUjKifejezes))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnStatisztika, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(pnStatisztika, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jbMegoldas)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(112, 112, 112))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     
+        Random rnd = new Random();
+        int elso = rnd.nextInt(30-1)+1;
+        int masodik = rnd.nextInt(10-1)+1;
+    
+        int eredmeny = elso / masodik;
+    
     private void jbMegoldasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMegoldasActionPerformed
-        
+    lbEredmeny.setText("Eremény: " + eredmeny);
             
     }//GEN-LAST:event_jbMegoldasActionPerformed
 
     private void txtEredmenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEredmenyActionPerformed
-     
+        
     }//GEN-LAST:event_txtEredmenyActionPerformed
 
     private void btnEllenorizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEllenorizActionPerformed
        int probalkozasokSzama=0;
-        if (txtEredmeny.getText().equals("6")) {
+       
+       
+        if (txtEredmeny.getText().equals(eredmeny)) {
             pnVisszajelzes.setBackground(Color.GREEN);
             probalkozasokSzama++;
         }else{
@@ -221,6 +235,14 @@ public class gui extends javax.swing.JFrame {
     private void jOsszeadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOsszeadasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jOsszeadasActionPerformed
+
+    private void btnUjKifejezesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjKifejezesActionPerformed
+        elso = rnd.nextInt(100-1)+1;
+        masodik = rnd.nextInt(100-1)+1;
+        eredmeny = elso / masodik;
+        lblMuvelet.setText(elso + " % " + masodik  );
+        //" = " + eredmeny 
+    }//GEN-LAST:event_btnUjKifejezesActionPerformed
 
     /**
      * @param args the command line arguments
